@@ -3,6 +3,7 @@
 
 #include <gpio.hpp>
 #include <chrono>
+#include <vector>
 using namespace serial;
 using gpio::HIGH;
 using gpio::LOW;
@@ -37,7 +38,7 @@ class I2C {
         /// Write data to the i2c bus.
         void writeData(char* msg, size_t msg_size, int address);
         /// Read data from the i2c bus.
-        char* readData(int address, size_t msg_size);
+        std::vector<char> readData(int address, size_t msg_size);
 
 
     private:

@@ -112,11 +112,11 @@ void I2C::writeData(char* msg, size_t msg_size, int address) {
     sendStopBit();
 }
 
-char* I2C::readData(int address, size_t msg_size) {
-    char data[msg_size];
+std::vector<char> I2C::readData(int address, size_t msg_size) {
+    std::vector<char> data;
     sendStartBit();
     for(int i = 0; i < msg_size; ++i) {
-        data[i] = readDataByte();
+        data.push_back(readDataByte());
         if(msg_size - i > 1) {
             sendStartBit();
         }
